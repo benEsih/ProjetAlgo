@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class PostFix {
 	private String x;
 
-	private PostFix filsgauche, filsdroit;
+	private PostFix enfantgauche, enfantdroit;
 
 	
 
@@ -40,7 +40,7 @@ public class PostFix {
 
 	 public PostFix getSousArbreGauche() {
 
-	        return(filsgauche);
+	        return(enfantgauche);
 
 	    }   
 
@@ -48,23 +48,23 @@ public class PostFix {
 
 	    public PostFix getSousArbreDroit() {
 
-	        return(filsdroit);
+	        return(enfantdroit);
 
 	    }
 
 	 
 
-	 public void setfilsgauche(PostFix arbr){
+	 public void setenfantgauche(PostFix arbr){
 
-		 this.filsgauche = arbr;
+		 this.enfantgauche = arbr;
 
 	 }
 
 	 
 
-	 public void setfilsdroit(PostFix arbr){
+	 public void setenfantdroit(PostFix arbr){
 
-		 this.filsdroit = arbr;
+		 this.enfantdroit = arbr;
 
 	 }
 
@@ -82,23 +82,23 @@ public class PostFix {
 
 	    public String toString(String s) {
 
-		if (filsgauche!=null) {
+		if (enfantgauche!=null) {
 
-		if (filsdroit!=null) 
+		if (enfantdroit!=null) 
 
-		    return(s+"_("+x+")___\n"+filsgauche.toString(s+"\t")+filsdroit.toString(s+"\t"));
+		    return(s+"_("+x+")___\n"+enfantgauche.toString(s+"\t")+enfantdroit.toString(s+"\t"));
 
 		else
 
-		    return(s+x+"\n"+filsgauche.toString(s+"\t")+"\n");
+		    return(s+x+"\n"+enfantgauche.toString(s+"\t")+"\n");
 
 	        }
 
 	        else 
 
-		if (filsdroit!=null) 
+		if (enfantdroit!=null) 
 
-		    return(s+x+"\n\n"+filsdroit.toString(s+"\t"));
+		    return(s+x+"\n\n"+enfantdroit.toString(s+"\t"));
 
 		else
 
@@ -120,7 +120,7 @@ public class PostFix {
 
 		 sc = new Scanner(System.in);
 
-		  System.out.println("Entrer l'expression postfixée--->");
+		  System.out.println("Entrer l'expression postfixÃ©e--->");
 
 		  ArrayList<String> list ; 
 
@@ -142,9 +142,9 @@ public class PostFix {
 
 				 aux =  pil.pop();
 
-				 courant.setfilsgauche(pil.pop());
+				 courant.setenfantgauche(pil.pop());
 
-				 courant.setfilsdroit(aux);
+				 courant.setenfantdroit(aux);
 
 			  }
 
@@ -156,11 +156,10 @@ public class PostFix {
 
 		  racine = pil.pop();
 
-		  System.out.println("L'arbre est : " );
+		  System.out.println("L'arbre de l'expression post fixe entree : " );
 
 		  System.out.println(racine + "\n" );
 
-		 // racine.Afficher(racine);
 
 		  
 
@@ -198,15 +197,15 @@ public class PostFix {
 
 		  System.out.println(operst.pop()+"\n");
 
-		  //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+		  //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 		  
 
 		  
 
-		  //-----------------------------evaluation-----------------------
+		  //-----------------------------evaluation de l'arbre-----------------------
 
-		  Double oper1, oper2,result;
+		  Double operande1, operande2,result;
 
 		  ArrayDeque<Double> abc = new ArrayDeque<Double>();
 
@@ -218,11 +217,11 @@ public class PostFix {
 
 			  else{
 
-				  oper2 = abc.pop();			  	
+				  operande2 = abc.pop();			  	
 
-				  oper1 = abc.pop();
+				  operande1 = abc.pop();
 
-			  	result = operate(oper1,oper2,n);			           
+			  	result = operate(operande1,operande2,n);			           
 
 			  		abc.push(result);
 
@@ -232,11 +231,11 @@ public class PostFix {
 
 		  }
 
-		  System.out.println("l'evaluation donne: ");
+		  System.out.println("l'evaluation de l'arbre donne: ");
 
 		  System.out.println(abc.pop());
 
-		  //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+		  //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
 
@@ -272,7 +271,7 @@ public class PostFix {
 
 	 private static double operate(Double a, Double b, String op){
 
-	        //Log.d("Calc", "w " +"operrrrr");
+	       
 
 	        switch (op){
 
